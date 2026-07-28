@@ -31,7 +31,7 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "https://huanchaunhat.github.io/fcaj-workshop-threenines/"
+            --baseURL "https://huanchaunhat.github.io/FCAJ_Workshop_threenines/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
