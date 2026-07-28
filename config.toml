@@ -1,10 +1,8 @@
-baseURL = "https://huanchaunhat.github.io/fcaj-workshop-threenines"
-
+baseURL = "https://huanchaunhat.github.io/fcaj-workshop-threenines/"
 relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"
 
-# Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
 
 # For search functionality
