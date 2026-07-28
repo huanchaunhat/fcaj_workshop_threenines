@@ -27,11 +27,7 @@ jobs:
           extended: true
 
       - name: Build website
-        run: |
-          hugo \
-            --gc \
-            --minify \
-            --baseURL "https://huanchaunhat.github.io/FCAJ_Workshop_threenines/"
+        run: hugo --gc --minify
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
