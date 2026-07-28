@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CloudCost Insight — Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>☁️ CloudCost Insight</h1>
+            <p id="header-subtitle">AWS Cost Monitoring &amp; Alert Dashboard — Near Real-Time</p>
+        </div>
+        <div class="header-controls">
+            <button id="lang-toggle">🇻🇳 VI</button>
+            <button id="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <div id="status" class="status">Loading cost data...</div>
+
+    <div id="content" style="display:none;">
+        <!-- KPI -->
+        <div class="kpi-row">
+            <div class="kpi-card">
+                <div class="label" id="label-total">Total Cost (Period)</div>
+                <div class="value" id="kpi-total">$0.00</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label" id="label-threshold">Alert Threshold/Day</div>
+                <div class="value" id="kpi-threshold">$0.00</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label" id="label-days">Monitored Days</div>
+                <div class="value" id="kpi-days">0</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label" id="label-anomalies">Anomalous Days</div>
+                <div class="value danger" id="kpi-anomalies">0</div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-grid">
+            <div class="chart-card full-width">
+                <h3 id="title-trend">📈 Daily Cost Trend (Threshold Line + Anomaly Markers)</h3>
+                <canvas id="trendChart" height="90"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3 id="title-service">🍩 Cost Share by Service</h3>
+                <div class="chart-small">
+                    <canvas id="serviceChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3 id="title-top">📊 Top Cost Services</h3>
+                <canvas id="topChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript riêng -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -5,55 +5,33 @@ weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Thiết lập nền tảng hạ tầng cho dự án CloudCost Insight bằng Infrastructure as Code (Terraform).
+* Cấu hình quản lý remote state trên HCP Terraform để phục vụ làm việc nhóm và bảo toàn trạng thái hạ tầng.
+* Triển khai các thành phần hạ tầng nền: S3, IAM, SNS, SQS (kèm DLQ) và EventBridge, đảm bảo tuân thủ nguyên tắc bảo mật (least privilege, chặn truy cập public).
+* Triển khai hạ tầng thực tế lên AWS và kiểm chứng (verify) toàn bộ tài nguyên trên Console.
+* Duy trì phối hợp cùng nhóm: trao đổi kế hoạch trước khi làm và tổng hợp kết quả sau mỗi ngày.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc triển khai trong tuần:
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Thiết lập nền tảng Terraform và HCP: <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Khởi tạo cấu trúc thư mục `terraform/`, viết file `versions.tf` (cấu hình provider AWS). <br>&emsp; + Cấu hình HCP Terraform (khối `cloud {}`) để quản lý remote state cho nhóm. <br>&emsp; + Định nghĩa các biến đầu vào trong `variables.tf` (region, project_name, alert_email, ngưỡng chi phí). <br>&emsp; + Cuối ngày tổng hợp và chia sẻ kết quả với nhóm. | 08/06/2026 | 08/06/2026 | - Terraform AWS Provider: <br> https://registry.terraform.io/providers/hashicorp/aws/latest/docs <br> - HCP Terraform Docs: <br> https://developer.hashicorp.com/terraform/cloud-docs |
+| 3 | - Triển khai tầng lưu trữ và bảo mật (S3 + IAM): <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Viết `s3.tf` tạo bucket lưu dữ liệu chi phí, bật Block Public Access, mã hóa SSE-S3, versioning và lifecycle tối ưu chi phí. <br>&emsp; + Viết `iam.tf` tạo IAM Role cho Lambda theo nguyên tắc Least Privilege. <br>&emsp; + Cuối ngày tổng hợp và chia sẻ kết quả với nhóm. | 09/06/2026 | 09/06/2026 | - Amazon S3 User Guide: <br> https://docs.aws.amazon.com/AmazonS3/latest/userguide/ <br> - IAM Best Practices: <br> https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html |
+| 4 | - Triển khai tầng thông báo và hàng đợi (SNS + SQS): <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Viết `sns.tf` tạo SNS Topic cảnh báo và subscription email. <br>&emsp; + Viết `sqs.tf` tạo hàng đợi chính và Dead Letter Queue (DLQ) với redrive policy để xử lý lỗi. <br>&emsp; + Cuối ngày tổng hợp và chia sẻ kết quả với nhóm. | 10/06/2026 | 10/06/2026 | - Amazon SNS Developer Guide: <br> https://docs.aws.amazon.com/sns/latest/dg/ <br> - Amazon SQS Developer Guide: <br> https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/ |
+| 5 | - Triển khai bộ lập lịch và khởi chạy hạ tầng: <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Viết `eventbridge.tf` tạo rule lập lịch chạy định kỳ (rate 1 ngày). <br>&emsp; + Viết `outputs.tf` xuất các giá trị quan trọng (ARN, tên tài nguyên). <br>&emsp; + Chạy `terraform init`, `plan`, `apply` để triển khai hạ tầng lên AWS. <br>&emsp; + Cuối ngày tổng hợp và chia sẻ tiến độ với nhóm. | 11/06/2026 | 11/06/2026 | - Amazon EventBridge User Guide: <br> https://docs.aws.amazon.com/eventbridge/latest/userguide/ |
+| 6 | - Kiểm chứng (verify) hạ tầng trên AWS Console: <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Kiểm tra S3 (block public, mã hóa, versioning), IAM (least privilege), SNS (xác nhận subscription email), SQS (redrive policy tới DLQ), EventBridge (rule và lịch chạy). <br>&emsp; + Chụp screenshot các tài nguyên phục vụ báo cáo. <br>&emsp; + Cuối ngày tổng hợp và chia sẻ kết quả với nhóm. | 12/06/2026 | 12/06/2026 | - AWS Management Console. |
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Thiết lập thành công nền tảng Infrastructure as Code:** Đã xây dựng cấu trúc dự án Terraform hoàn chỉnh và cấu hình HCP Terraform để quản lý remote state. Việc dùng remote state giúp trạng thái hạ tầng được lưu tập trung, hỗ trợ khóa trạng thái (state locking), là nền tảng quan trọng cho việc phối hợp và mở rộng dự án về sau.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* **Triển khai đầy đủ hạ tầng nền theo chuẩn bảo mật:** Hoàn thành việc định nghĩa và triển khai các thành phần cốt lõi gồm S3 (lưu trữ dữ liệu chi phí), IAM (phân quyền), SNS (cảnh báo), SQS và DLQ (đệm sự kiện và xử lý lỗi), EventBridge (lập lịch). Toàn bộ tuân thủ best practice bảo mật của AWS: bucket S3 chặn truy cập public và bật mã hóa, IAM Role được cấp quyền theo nguyên tắc Least Privilege, không hard-code thông tin nhạy cảm.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* **Áp dụng cơ chế xử lý lỗi (resilience):** Cấu hình Dead Letter Queue (DLQ) kèm redrive policy cho hàng đợi SQS, giúp hệ thống không mất dữ liệu khi có sự kiện xử lý thất bại, thể hiện tư duy thiết kế hệ thống có khả năng chịu lỗi.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* **Triển khai và kiểm chứng thực tế:** Đã chạy `terraform apply` thành công, đưa toàn bộ hạ tầng lên AWS. Tiến hành kiểm tra từng tài nguyên trên AWS Console để xác nhận cấu hình đúng như thiết kế, đồng thời xác nhận subscription email của SNS để sẵn sàng nhận cảnh báo. Hạ tầng nền đã sẵn sàng cho giai đoạn phát triển các hàm Lambda ở các tuần tiếp theo.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Phối hợp cùng nhóm:** Duy trì thói quen làm việc nhóm hiệu quả trong suốt tuần. Trước khi bắt đầu công việc mỗi ngày, tôi trao đổi kế hoạch với các thành viên trong nhóm, và cuối mỗi ngày tổng hợp lại kết quả đã làm để cả nhóm cùng nắm tiến độ.

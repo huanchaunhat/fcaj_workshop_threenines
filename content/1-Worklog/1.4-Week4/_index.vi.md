@@ -5,55 +5,34 @@ weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Họp nhóm để thảo luận, đề xuất và chốt đề tài cho dự án cá nhân.
+* Lên ý tưởng và đảm bảo đề tài giải quyết một bài toán thiết thực trên AWS.
+* Nghiên cứu và lựa chọn kiến trúc hạ tầng phù hợp (ưu tiên Serverless) để xây dựng hệ thống.
+* Hoàn thiện Proposal với định hướng công nghệ và lộ trình phát triển rõ ràng.
+* Trực quan hóa giải pháp bằng các sơ đồ kiến trúc (Architecture Diagram) chi tiết.
+* Chuẩn bị môi trường mã nguồn, khắc phục các sự cố liên quan đến template dự án (lỗi Git submodule).
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc triển khai trong tuần:
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Họp nhóm và lên ý tưởng dự án: <br>&emsp; + Họp nhóm để cùng thảo luận, đề xuất và định hướng đề tài. <br>&emsp; + Phân tích bài toán quản lý và cảnh báo chi phí trên AWS. <br>&emsp; + Tham khảo tính năng AWS Cost Anomaly Detection để định vị ý tưởng. <br>&emsp; + Thống nhất và chốt đề tài dự án cá nhân **CloudCost Insight**. | 01/06/2026 | 01/06/2026 | - AWS Cost Management (Cost Anomaly Detection): <br> https://docs.aws.amazon.com/cost-management/latest/userguide/manage-ad.html |
+| 3 | - Nghiên cứu và thiết kế hệ thống: <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Tìm hiểu ưu điểm của kiến trúc Serverless (khả năng mở rộng, tối ưu chi phí vận hành). <br>&emsp; + Thiết kế luồng thu thập, phân tích và cảnh báo. <br>&emsp; + Chốt công nghệ triển khai: Serverless kết hợp IaC (Terraform). <br>&emsp; + Cuối ngày tổng hợp và chia sẻ kết quả với nhóm. | 02/06/2026 | 02/06/2026 | - AWS Serverless Architecture: <br> https://aws.amazon.com/serverless/ <br> - AWS Well-Architected – Cost Optimization Pillar |
+| 4 | - Viết Proposal dự án: <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Viết phần giới thiệu, phạm vi và mục tiêu dự án. <br>&emsp; + Lập luận lý do chọn đề tài dựa trên nhu cầu thực tế và mục đích học tập. <br>&emsp; + Định nghĩa các ngưỡng ngân sách riêng và logic tùy biến cảnh báo. <br>&emsp; + Cuối ngày tổng hợp và chia sẻ tiến độ với nhóm. | 03/06/2026 | 03/06/2026 | - Tổng hợp kiến thức từ các tài liệu nghiên cứu thiết kế hệ thống và quản lý chi phí AWS. |
+| 5 | - Vẽ Diagram: <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Vẽ sơ đồ kiến trúc tổng quan (High-level Architecture). <br>&emsp; + Vẽ sơ đồ luồng dữ liệu (Data Flow) mô tả cách các thành phần Serverless tương tác để phát hiện chi phí bất thường. <br>&emsp; + Cuối ngày tổng hợp và chia sẻ kết quả với nhóm. | 04/06/2026 | 04/06/2026 |  |
+| 6 | - Khởi tạo môi trường và fix lỗi template: <br>&emsp; + Trao đổi với nhóm về kế hoạch công việc trong ngày trước khi bắt đầu. <br>&emsp; + Kiểm tra và rà soát cấu trúc thư mục dự án ban đầu. <br>&emsp; + Xử lý lỗi Git submodule trong template (bị hỏng, cấu hình repository không đầy đủ, không push được source lên GitHub Pages). <br>&emsp; + Cấu hình lại chuẩn xác để sẵn sàng cho quá trình phát triển. <br>&emsp; + Cuối ngày tổng hợp và chia sẻ tiến độ với nhóm. | 05/06/2026 | 05/06/2026 |  |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Họp nhóm và chốt ý tưởng dự án:** Tuần làm việc bắt đầu bằng buổi họp nhóm để cùng nhau thảo luận, đề xuất và định hướng đề tài. Sau khi trao đổi, tôi đã hoàn thành việc lên ý tưởng và chốt đề tài dự án cá nhân **CloudCost Insight**, một hệ thống giám sát và cảnh báo chi phí AWS. Quá trình lên ý tưởng xuất phát từ một bài toán thực tế: với mô hình pay-as-you-go, chi phí AWS rất dễ vượt tầm kiểm soát nếu không được theo dõi chủ động.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* **Lý do lựa chọn đề tài:** Trong quá trình nghiên cứu, tôi đã tham khảo **AWS Cost Anomaly Detection**, tính năng cảnh báo chi phí bất thường có sẵn của AWS. Việc này giúp khẳng định giám sát chi phí là một nhu cầu thực tế được chính AWS công nhận. Trên cơ sở đó, tôi lựa chọn hướng đi cốt lõi là thay vì sử dụng dịch vụ managed có sẵn, dự án sẽ **tự xây dựng toàn bộ luồng thu thập, phân tích và cảnh báo bằng kiến trúc Serverless kết hợp Terraform (IaC)**. Hướng tiếp cận này nhằm ba mục đích: học tập và làm chủ hoàn toàn kiến trúc hạ tầng AWS, rèn luyện kỹ năng Infrastructure as Code, và chủ động tùy biến logic phát hiện theo từng ngưỡng ngân sách riêng.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* **Hoàn thiện bộ tài liệu đề xuất:** Đã viết xong Proposal dự án rõ ràng, chi tiết hóa mục tiêu, phạm vi và định hướng công nghệ. Đồng thời hoàn thành các sơ đồ kiến trúc tổng quan và luồng dữ liệu, giúp trực quan hóa cách các dịch vụ Serverless tương tác để phát hiện và cảnh báo chi phí bất thường.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* **Xử lý sự cố môi trường phát triển:** Khắc phục thành công lỗi Git submodule trong template khởi tạo, thiết lập môi trường phát triển đồng bộ và sẵn sàng bước vào giai đoạn lập trình, cấu hình hạ tầng ở các tuần tiếp theo.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Phối hợp cùng nhóm:** Duy trì thói quen làm việc nhóm hiệu quả trong suốt tuần. Trước khi bắt đầu công việc mỗi ngày, tôi trao đổi kế hoạch với các thành viên trong nhóm, và cuối mỗi ngày tổng hợp lại kết quả đã làm để cả nhóm cùng nắm tiến độ.
